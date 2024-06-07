@@ -31,3 +31,40 @@ body {
     text-wrap: balance;
   }
 }
+
+/* @layer components{
+  .bg-glass{
+      @apply bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 hover:bg-gray-600/10 border-gray-100 text-white
+  }
+} */
+
+.upper-layer {
+   
+   
+  position: relative;
+
+/*the alpha value controls the transparency*/
+  background: rgba(60, 60, 60, 0.3);
+
+/* This controls the blurring effect*/
+backdrop-filter: blur( 7.5px );
+  -webkit-backdrop-filter: blur( 7.5px );
+
+/*Adding the shadow*/
+box-shadow: 0 10px 35px 0 rgba(124, 124, 124, 0.25);
+
+/* Adding our borders*/
+  border-radius: 15px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  z-index: 4;
+
+}
+
+.bg-custom{
+  background: linear-gradient(to bottom right,rgba(0,0,0,0.5),rgba(0,0,0,0.4)),url('../../public/bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
