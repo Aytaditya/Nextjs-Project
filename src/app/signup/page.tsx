@@ -5,17 +5,47 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import  axios  from "axios"
 import Image from "next/image"
+import {toast} from "react-hot-toast"
 
 
 export default function SignupPage() {
+    const router = useRouter();
     const [user,setUser] = useState({
         email: "",
         password: "",
         username: ""
     })
+    const [loading,setLoading]=useState(false)
+
     const onSignup=async(e:any)=>{
+       try {
         e.preventDefault();
         console.log(user)
+        setLoading(true)
+        const response=await axios.post("/api/users/signup",user)
+        console.log(response.data)     //response.data is logged instead of response because response.data contains the actual data returned from the server, while response includes additional metadata about the HTTP response.
+
+        //clearing the loading state
+        setLoading(false)
+
+        //clearing the input fields
+        setUser({
+            email: "",
+            password: "",
+            username: ""
+        })
+
+        //redirect to home page
+        router.push("/")
+        
+        
+       } catch (error:any) {
+              alert(error.message)
+              console.log(error.message)
+       }
+       finally{
+           setLoading(false)
+       }
     }
     return (
         <div className="flex flex-row bg-custom h-screen ">
@@ -43,7 +73,13 @@ export default function SignupPage() {
             </p>
             {/* submit button */}
             <div className="flex flex-col items-center mt-[120px]">
-            <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 hover:bg-[#501b50]">SignUp</button>
+            {!loading && (
+                <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 hover:bg-[#501b50]">SignUp</button>
+            )}
+            {loading &&(
+                <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 hover:bg-[#501b50]" disabled={true}>Signing In...</button>
+            )}
+
             </div>
             </form>
         </div>
