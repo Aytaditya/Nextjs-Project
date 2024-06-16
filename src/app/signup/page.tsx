@@ -36,7 +36,7 @@ export default function SignupPage() {
         })
 
         //redirect to home page
-        router.push("/")
+        router.push("/login")
         
         
        } catch (error:any) {

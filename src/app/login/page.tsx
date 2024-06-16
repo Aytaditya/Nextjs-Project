@@ -34,7 +34,7 @@ export default function LoginPage() {
             setLoading(false)
 
             //redirect to home page
-            router.push("/")
+            router.push("/profile")
             
         } catch (error:any) {
             console.log(error)
