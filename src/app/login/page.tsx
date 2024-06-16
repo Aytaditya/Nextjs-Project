@@ -8,13 +8,42 @@ import Image from "next/image"
 
 
 export default function LoginPage() {
+    const router = useRouter();
     const [user,setUser] = useState({
         email: "",
         password: "",
     })
+
+    const [loading,setLoading]=useState(false)
+
     const onSignup=async(e:any)=>{
         e.preventDefault();
-        console.log(user)
+        console.log(user);
+        try {
+            setLoading(true);
+            const response=await axios.post("/api/users/login",user);
+            console.log(response.data)
+
+            //clearing the input fields
+            setUser({
+                email: "",
+                password: "",
+            })
+
+            //clearing the loading state
+            setLoading(false)
+
+            //redirect to home page
+            router.push("/")
+            
+        } catch (error:any) {
+            console.log(error)
+            alert(error.message)
+        }
+        finally{
+            setLoading(false)
+        }
+
     }
     const handleDisable =():boolean=>{
         if(user.email=="" || user.password==""){
@@ -46,7 +75,12 @@ export default function LoginPage() {
             </p>
             {/* submit button */}
             <div className="flex flex-col items-center mt-[50px]">
-            <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 " disabled={handleDisable()}>Login</button>
+            {!loading && (
+                <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 " disabled={handleDisable()}>Login</button>
+            )}
+            {loading && (
+                <button className="bg-[purple] w-[40%] text-white px-4 py-2 rounded-lg font-semibold mr-2 " disabled={true}>Logging User...</button>
+            )}
             </div>
             </form>
         </div>

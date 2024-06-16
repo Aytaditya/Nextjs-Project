@@ -5,7 +5,7 @@ import Link from "next/link"
 import { useRouter } from "next/navigation"
 import  axios  from "axios"
 import Image from "next/image"
-import {toast} from "react-hot-toast"
+
 
 
 export default function SignupPage() {
