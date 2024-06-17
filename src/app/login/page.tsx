@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     const [loading,setLoading]=useState(false)
 
-    const onSignup=async(e:any)=>{
+    const onSignup:any=async(e:any)=>{
         e.preventDefault();
         console.log(user);
         try {
