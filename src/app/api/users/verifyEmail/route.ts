@@ -1,6 +1,5 @@
 import {connect} from "@/dbConfig/dbConfig";
 import User from "@/models/userModel"
-import { stat } from "fs";
 import { NextRequest, NextResponse} from "next/server";
 
 
@@ -12,10 +11,9 @@ export async function POST(request:NextRequest){
         const {token}=reqBody;
         console.log(token)
 
-        const user=await User.findOne({
-            verifyToken:token,
-            verifyTokenExpire:{$gt:Date.now()}
-        })
+        const user = await User.findOne({verifyToken: token});
+
+        console.log(user)
 
         if(!user){
             return NextResponse.json({error:"User not Found"},{status:400})
@@ -23,7 +21,7 @@ export async function POST(request:NextRequest){
 
         console.log(user);
 
-        user.isVerifeid=true;
+        user.isVerified=true;
         user.verifyToken=undefined;
         user.verifyTokenExpiry=undefined;
 
