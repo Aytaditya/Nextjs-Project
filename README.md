@@ -29,9 +29,9 @@ This document outlines the features, tech stack, prerequisites, installation ste
 
 Ensure you have the following installed on your development machine:
 
-* Node.js ([https://nodejs.org/en](https://nodejs.org/en))
-* npm (bundled with Node.js) or yarn (a package manager, [https://yarnpkg.com/](https://yarnpkg.com/))
-* MongoDB ([https://www.mongodb.com/try/download/community](https://www.mongodb.com/try/download/community))
+* [Node.js](https://nodejs.org/en)
+* [npm (bundled with Node.js) or yarn (a package manager)](https://yarnpkg.com/)
+* [MongoDB](https://www.mongodb.com/try/download/community)
 
 ## Installation
 
