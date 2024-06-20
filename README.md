@@ -23,8 +23,6 @@ This document outlines the features, tech stack, prerequisites, installation ste
 * **Authentication:** Nodemailer, Mailtrap, jsonwebtoken
 * **HTTP Client:** Axios
 
-**Note:** An image (./app.png) is referenced in the original document, but it's not included here due to markdown limitations.
-
 ## Prerequisites
 
 Ensure you have the following installed on your development machine:
